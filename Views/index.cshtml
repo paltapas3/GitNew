@@ -10,7 +10,7 @@
 
         <div>
 
-            <table id="employees" style="border: 1px solid black;"></table>
+            <table id="Users" style="border: 1px solid black;"></table>
 
         </div>
 
@@ -18,11 +18,13 @@
 
 </div>
 
+
+
 @section scripts {
 
     <script>
 
-        var apiEmployees = 'api/employee';
+        var apiUsers = 'api/Users';
 
         $(document).ready(function () {
 
@@ -30,29 +32,41 @@
 
             var rows = '';
 
-            $('#employees').empty();
+            $('#Users').empty();
 
-            $.getJSON(apiEmployees,
+            $.getJSON(apiUsers,
 
                 function (data) {
 
                     $.each(data, function (key, val) {
 
-                        var employeeURL = apiEmployees + '/' + val.EmployeeID;
+                        var UsersURL = apiUsers + '/' +val.Customer_Name; 
 
                         rows = rows + '<tr style="border: 1px solid black;"><td>  ' +
 
                         '<a style="color: Blue; font-weight:bold; font-size:15px"'
 
-                           + 'href="' + employeeURL + '">' + val.ID + '</a>' +
+                           + 'href="' + UsersURL + '">' + val.Pan_no + '</a>' +
 
-                            '</td><td>' + val.Cmp_Name +
+                            '</td><td>' + val.Aadhar_no +
 
-                            '</td><td>' + val.Address + '</td></tr>';
+                            '</td><td>' + val.Address + 
+                                
+                            '</td></tr>' + val.Gender +
+
+                             '</td></tr>' + val.Phone +
+
+                              '</td></tr>' + val.Account_type +
+
+                               '</td></tr>' + val.DOB +
+
+                                '</td></tr>';
+
+
 
                     });
 
-                    $('#employees').html(rows);
+                    $('#Users').html(rows);
 
                 });
 
