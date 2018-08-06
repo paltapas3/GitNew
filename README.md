@@ -1,0 +1,2 @@
+# GitNew
+New dotnetcore project
