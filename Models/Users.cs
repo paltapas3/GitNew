@@ -1,8 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPICore.Models
 {
@@ -10,15 +6,20 @@ namespace WebAPICore.Models
 
     {
 
-        public string ID { get; set; }
-
-        public string Name { get; set; }
+        public string Customer_Name { get; set; }
 
         public string Address { get; set; }
 
-        public string Acc_no { get; set; }
+        public string Pan_no { get; set; }
 
-        public string password { get; set; }
+        public long Aadhar_no { get; set; }
 
+        public long Phone { get; set; }
+        
+        public string Gender { get; set; }
+
+        public string Account_type { get; set; }
+
+        public string DOB { get; set; }
     }
 }
