@@ -1,0 +1,196 @@
+Add the following code:
+
+using System;
+
+using System.Collections.Generic;
+
+using System.Linq;
+
+using System.Net;
+
+using System.Net.Http;
+
+using System.Web.Http;
+
+using APIApp.Models;
+
+using System.Xml.Linq;
+
+namespace APIApp.Controllers
+
+{
+
+    public class EmployeeController : ApiController
+
+    {
+
+        public List<Employee> GetAllEmpoyees()
+
+        {            
+
+            List<Employee> employees = new List<Employee>();    
+
+            XDocument doc = XDocument.Load("D:\\Mudita\\Employee.xml");
+
+            foreach (XElement element in doc.Descendants("DocumentElement")
+
+                .Descendants("Employee"))
+
+            {
+
+                Employee employee = new Employee();
+
+                employee.ID = element.Element("ID").Value;
+
+                employee.Cmp_Name = element.Element("Cmp_Name").Value;
+
+                employee.Address  = element.Element ("Address").Value;
+
+                employees.Add(employee);   
+
+            }
+
+            return employees;
+
+        }
+
+        public Employee GetEmployee(int id)
+
+        {
+
+           Employee employee = new Employee();
+
+           XDocument doc = XDocument.Load("D:\\Mudita\\Employee.xml");
+
+            XElement element = doc.Element("DocumentElement")
+
+                                .Elements("Employee").Elements("ID").
+
+                                SingleOrDefault(x => x.Value == id.ToString());
+
+                       if (element != null)
+
+            {
+
+                XElement parent = element.Parent;
+
+                employee.ID =
+
+                        parent.Element("ID").Value;
+
+                employee.Cmp_Name =
+
+                        parent.Element("Cmp_Name").Value;
+
+                employee.Address =
+
+                        parent.Element("Address").Value;
+
+                return employee;
+
+            }
+
+            else
+
+            {
+
+                throw new HttpResponseException
+
+                    (new HttpResponseMessage(HttpStatusCode.NotFound));
+
+            }
+
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+    Add the following code to it:
+
+ 
+
+<div id="body">
+
+    <section class="content-wrapper main-content clear-fix">
+
+        <div>
+
+            <h2>All Employees</h2>
+
+        </div>
+
+        <div>
+
+            <table id="employees" style="border: 1px solid black;"></table>
+
+        </div>
+
+    </section>
+
+</div>
+
+@section scripts {
+
+    <script>
+
+        var apiEmployees = 'api/employee';
+
+        $(document).ready(function () {
+
+            // Send an AJAX request
+
+            var rows = '';
+
+            $('#employees').empty();
+
+            $.getJSON(apiEmployees,
+
+                function (data) {
+
+                    $.each(data, function (key, val) {
+
+                        var employeeURL = apiEmployees + '/' + val.EmployeeID;
+
+                        rows = rows + '<tr style="border: 1px solid black;"><td>  ' +
+
+                        '<a style="color: Blue; font-weight:bold; font-size:15px"'
+
+                           + 'href="' + employeeURL + '">' + val.ID + '</a>' +
+
+                            '</td><td>' + val.Cmp_Name +
+
+                            '</td><td>' + val.Address + '</td></tr>';
+
+                    });
+
+                    $('#employees').html(rows);
+
+                });
+
+        });
+
+    </script>
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://www.c-sharpcorner.com/UploadFile/2b481f/read-xml-file-by-using-web-api/
