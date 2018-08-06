@@ -1,2 +1,2 @@
-# GitNew
-New dotnetcore project
+# WebAPICore
+A sample repo for testing .net core app on openshift
