@@ -15,7 +15,7 @@ namespace WebAPICore.Controllers
     public class UsersController : ControllerBase
     {     
         [HttpGet]
-        public ActionResult<List<UsersItem>> GetAll()
+        public ActionResult<List<Users>> GetAll()
         {
              //read from xml
             List<Users> userlist = new List<Users>();    
