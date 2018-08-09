@@ -20,18 +20,18 @@ namespace WebAPICore.Controllers
         {
              //read from xml
             List<Users> userlist = new List<Users>();
-            userlist.Add(new Users() {Id = "17", Name ="Rishav" });
-      
-            //XDocument doc = XDocument.Load("D:\\Gitold\\WebAPICore\\UserData.xml");
-            //foreach (XElement element in doc.Descendants("DocumentElement")
-            //    .Descendants("user"))
-            //{
-            //    Users user = new Users();
-            //    user.Id = element.Element("Id").Value;
-            //    user.Name = element.Element("Name").Value;
+            // userlist.Add(new Users {Id = "17", Name ="Rishav" });
 
-            //    userlist.Add(user);   
-            //}
+            XDocument doc = XDocument.Load("D:\\Gitold\\WebAPICore\\UserData.xml");
+            foreach (XElement element in doc.Descendants("DocumentElement")
+                .Descendants("user"))
+            {
+                Users user = new Users();
+                user.Id = element.Element("Id").Value;
+                user.Name = element.Element("Name").Value;
+
+                userlist.Add(user);
+            }
 
 
             return userlist;
