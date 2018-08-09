@@ -22,7 +22,7 @@ namespace WebAPICore.Controllers
             List<Users> userlist = new List<Users>();
             // userlist.Add(new Users {Id = "17", Name ="Rishav" });
 
-            XDocument doc = XDocument.Load("D:\\Gitold\\WebAPICore\\UserData.xml");
+            XDocument doc = XDocument.Load("~/UserData.xml");
             foreach (XElement element in doc.Descendants("DocumentElement")
                 .Descendants("user"))
             {
