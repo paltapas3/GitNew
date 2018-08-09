@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-
+using System.Xml.Linq;
 using WebAPICore.Models;
 
 namespace WebAPICore.Controllers
@@ -14,25 +14,13 @@ namespace WebAPICore.Controllers
     [Route("api/Users")]
     [ApiController]
     public class UsersController : ControllerBase
-    {
-        private readonly IHostingEnvironment _hostingEnvironment;
-
-        public UsersController(IHostingEnvironment hostingEnvironment)
-        {
-            _hostingEnvironment = hostingEnvironment;
-        }
-
+    {     
         [HttpGet]
         public ActionResult<List<Users>> GetAll()
         {
-             //read from xml
+          
             List<Users> userlist = new List<Users>();
-            
-
-
-            string contentRootPath = _hostingEnvironment.ContentRootPath;
-            var JSON = System.IO.File.ReadAllText(contentRootPath + "/UserData.json");
-            userlist=JsonConvert.DeserializeObject(JSON);
+            userlist.Add(new Users {Id = "17", Name ="Rishav" });
 
             return userlist;
         }
