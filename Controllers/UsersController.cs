@@ -24,7 +24,7 @@ namespace WebAPICore.Controllers
                 .Descendants("user"))
             {
                 Users user = new Users();
-                user.Id = Convert.ToInt64(element.Element("Id").Value);
+                user.Id = element.Element("Id").Value;
                 user.Name = element.Element("Name").Value;
 
                 userlist.Add(user);   
