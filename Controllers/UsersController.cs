@@ -16,16 +16,15 @@ namespace WebAPICore.Controllers
     public class UsersController : ControllerBase
     {     
         [HttpGet]
-        public ActionResult<List<Users>> GetAll()
         {
              //read from xml
             List<Users> userlist = new List<Users>();    
             XDocument doc = XDocument.Load("D:\\Gitold\\WebAPICore\\UserData.xml");
             foreach (XElement element in doc.Descendants("DocumentElement")
-                .Descendants("UserData"))
+                .Descendants("user"))
             {
                 Users user = new Users();
-                user.Id = element.Element("Id").Value;
+                user.Id = Convert.ToInt64(element.Element("Id").Value);
                 user.Name = element.Element("Name").Value;
 
                 userlist.Add(user);   
