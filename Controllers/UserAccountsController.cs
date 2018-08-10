@@ -22,7 +22,7 @@ namespace WebAPICore.Controllers
         }
 
       [HttpPost]
-        public ActionResult<List<UserAccount>> CreateAccount(UserAccount account)
+        public string CreateAccount(UserAccount account)
         {
              UserList._userList.Add(account);
          return "success";
