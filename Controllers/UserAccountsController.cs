@@ -29,7 +29,7 @@ namespace WebAPICore.Controllers
         public IActionResult Create(string name)
         {
             UserList._userList.Add(new UserAccount { Id = "1", Name = name });
-            return CreatedAtRoute("GetAllUser");
+            return RedirectToAction("GetAll");
         }
     }
 }
