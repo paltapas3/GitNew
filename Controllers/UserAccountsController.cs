@@ -26,10 +26,10 @@ namespace WebAPICore.Controllers
 
        
         [HttpPost]
-        public ActionResult<string> Create(string name)
+        public IActionResult Create(string name)
         {
-          //  UserList._userList.Add(account);
-            return name;
+            UserList._userList.Add(new UserAccount { Id = "1", Name = "Rabi" });
+            return NoContent();
         }
     }
 }
