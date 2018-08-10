@@ -26,10 +26,10 @@ namespace WebAPICore.Controllers
 
        
         [HttpPost]
-        public IActionResult Create(string UserAccount)
+        public IActionResult Create(UserAccount userAccount)
         {
-            UserList._userList.Add(new UserAccount { Id = "1", Name = UserAccount.Name });
-            return RedirectToAction("GetAll");
+            UserList._userList.Add(new UserAccount { Id = "1", Name = userAccount.Name });
+            return RedirectToActionPermanent("GetAll");
         }
     }
 }
