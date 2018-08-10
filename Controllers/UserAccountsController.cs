@@ -10,7 +10,7 @@ using WebAPICore.Models;
 
 namespace WebAPICore.Controllers
 {
-    [Route("api/UserAccounts")]
+   
     [ApiController]
     public class UserAccountsController : ControllerBase
     {     
@@ -24,8 +24,9 @@ namespace WebAPICore.Controllers
                 return UserList._userList;
         }
 
+        [Route("api/UserAccounts/create")]
         [HttpPost]
-        public string Post(string name)
+        public ActionResult<string> Create(string name)
         {
           //  UserList._userList.Add(account);
             return name;
