@@ -25,7 +25,7 @@ namespace WebAPICore.Controllers
         }
 
         [HttpPost]
-        public string Add(string name)
+        public string Post(string name)
         {
           //  UserList._userList.Add(account);
             return name;
