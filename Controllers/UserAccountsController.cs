@@ -15,7 +15,7 @@ namespace WebAPICore.Controllers
     public class UserAccountsController : ControllerBase
     {     
    
-     [HttpGet]
+     [HttpGet(Name = "GetAllUser")]
         public ActionResult<List<UserAccount>> GetAll()
         {
             //List<UserAccount> acc=new  List<UserAccount>();
@@ -28,8 +28,8 @@ namespace WebAPICore.Controllers
         [HttpPost]
         public IActionResult Create(string name)
         {
-            UserList._userList.Add(new UserAccount { Id = "1", Name = "Rabi" });
-            return NoContent();
+            UserList._userList.Add(new UserAccount { Id = "1", Name = name });
+            return CreatedAtRoute("GetAllUser");
         }
     }
 }
