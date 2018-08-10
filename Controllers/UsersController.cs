@@ -21,7 +21,7 @@ namespace WebAPICore.Controllers
           
             List<Users> userlist = new List<Users>();
             userlist.Add(new Users {Id = "17", Name ="Rishav" });
-
+            //read json file
             return userlist;
         }
     
