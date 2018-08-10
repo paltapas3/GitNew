@@ -28,7 +28,7 @@ namespace WebAPICore.Controllers
         [HttpPost]
         public ActionResult<List<UserAccount>> Create(UserAccount userAccount) //IActionResult
         {
-            UserList._userList.Add(new UserAccount { Id = "1", Name = userAccount.Name });
+            UserList._userList.Add(userAccount);
             return   UserList._userList;
             // return RedirectToActionPermanent("GetAll");
         }
