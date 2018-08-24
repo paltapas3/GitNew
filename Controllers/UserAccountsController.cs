@@ -15,22 +15,18 @@ namespace WebAPICore.Controllers
     public class UserAccountsController : ControllerBase
     {     
    
-     [HttpGet]
+        [HttpGet]
         public ActionResult<List<UserAccount>> GetAll()
         {
-            //List<UserAccount> acc=new  List<UserAccount>();
-            //     acc.Add(new UserAccount{Id="1",Name="Rabi"});
-         
                 return UserList._userList;
         }
 
        
         [HttpPost]
-        public ActionResult<List<UserAccount>> Create(UserAccount userAccount) //IActionResult
+        public ActionResult<List<UserAccount>> Create(UserAccount userAccount)
         {
             UserList._userList.Add(userAccount);
             return   UserList._userList;
-            // return RedirectToActionPermanent("GetAll");
         }
     }
 }
