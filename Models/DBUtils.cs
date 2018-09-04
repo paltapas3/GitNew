@@ -15,10 +15,11 @@ public class DBUtils
         try
         {
             var cb = new SqlConnectionStringBuilder();
-            cb.DataSource = "openshift.database.windows.net";
-            cb.UserID = "user";
-            cb.Password = "database@12345";
-            cb.InitialCatalog = "BankAccountDB";
+            //cb.DataSource = "openshift.database.windows.net";
+            //cb.UserID = "user";
+             cb.ConnectionString = "Server = tcp:openshift.database.windows.net,1433; Initial Catalog = BankAccountDB; Persist Security Info = False; User ID =user; Password =database@12345; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;";
+            //cb.Password = "database@12345";
+            //cb.InitialCatalog = "BankAccountDB";
 
             using (SqlConnection connection = new SqlConnection(cb.ConnectionString))
             {
