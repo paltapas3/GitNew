@@ -30,6 +30,7 @@ public class DBUtils
 
                 connection.SQL_NonQuery();
                 connection.Close();
+                
             }
         }
         catch (SqlException e)
