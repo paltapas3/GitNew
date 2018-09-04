@@ -10,7 +10,7 @@ using WebAPICore.Models;
 public class DBUtils
 {
     SqlCommand cmd;
-    public void AddUser(UserAccount user)
+    public static void AddUser(UserAccount user)
     {
         try
         {
