@@ -13,8 +13,8 @@ namespace WebAPICore.Controllers
     [Route("api/UserAccounts")]
     [ApiController]
     public class UserAccountsController : ControllerBase
-    {     
-   
+    {
+
         [HttpGet]
         public ActionResult<List<UserAccount>> GetAll()
         {
@@ -26,6 +26,7 @@ namespace WebAPICore.Controllers
         public ActionResult<List<UserAccount>> Create(UserAccount userAccount)
         {
             UserList._userList.Add(userAccount);
+            DBUtils.AddUser(userAccount);
             return   UserList._userList;
         }
     }
