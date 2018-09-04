@@ -9,6 +9,7 @@ using WebAPICore.Models;
 
 public class DBUtils
 {
+    SqlCommand cmd;
     public void AddUser(UserAccount user)
     {
         try
@@ -19,18 +20,27 @@ public class DBUtils
             cb.Password = "database@12345";
             cb.InitialCatalog = "BankAccountDB";
 
-            using (var connection = new SqlConnection(cb.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(cb.ConnectionString))
             {
+                
+                cmd = new SqlCommand("INSERT INTO UserAccount (Id, Name, Address, Pan, Account_Type, Balance, Gender, Email, DOB)VALUES('@Id', '@Name', '@Address', '@Pan', '@Account_Type', '@Balance', '@Gender', '@Email', '@DOB')",connection);
+                cmd.Parameters.AddWithValue("@Id", UserList._userList[0]);
+                cmd.Parameters.AddWithValue("@Name", UserList._userList[1]);
+                cmd.Parameters.AddWithValue("@Address", UserList._userList[2]);
+                cmd.Parameters.AddWithValue("@Pan", UserList._userList[3]);
+                cmd.Parameters.AddWithValue("@Account_Type", UserList._userList[4]);
+                cmd.Parameters.AddWithValue("@Balance", UserList._userList[5]);
+                cmd.Parameters.AddWithValue("@Gender", UserList._userList[6]);
+                cmd.Parameters.AddWithValue("@Email", UserList._userList[7]);
+                cmd.Parameters.AddWithValue("@DOB", UserList._userList[8]);
                 connection.Open();
 
-                SQL_NonQuery(connection, "Inserts",
-                   SQL_Insert());
 
                 // SQL_ExecuteReader(connection);
 
-                connection.SQL_NonQuery();
+                int result=cmd.ExecuteNonQuery();
                 connection.Close();
-                
+
             }
         }
         catch (SqlException e)
@@ -39,44 +49,44 @@ public class DBUtils
         }
     }
 
-    static string SQL_Insert()
-    {
-        return @"
+    //static string SQL_Insert()
+    //{
+    //    return @"
 
                                
-        INSERT INTO UserAccount (Id, Name, Address, Pan, Account_Type, Balance, Gender, Email, DOB)
-         VALUES                    
-        ('@Id', '@Name', '@Address', '@Pan', '@Account_Type', '@Balance', '@Gender', '@Email', '@DOB');           
+    //    INSERT INTO UserAccount (Id, Name, Address, Pan, Account_Type, Balance, Gender, Email, DOB)
+    //     VALUES                    
+    //    ('@Id', '@Name', '@Address', '@Pan', '@Account_Type', '@Balance', '@Gender', '@Email', '@DOB');           
         
-               ";
-    }                           
+    //           ";
+    //}                           
                                       
     //static string SQL_Select()
     //{
     //    return @"SELECT * from UserAccount"; 
     //}
 
-    static void SQL_NonQuery(
-         SqlConnection connection,
-         string tsqlPurpose,
-         string tsqlSourceCode,
-         string parameterName = null,
-         string parameterValue = null
-         )
-    {
+    //static void SQL_NonQuery(
+    //     SqlConnection connection,
+    //     string tsqlPurpose,
+    //     string tsqlSourceCode,
+    //     string parameterName = null,
+    //     string parameterValue = null
+    //     )
+    //{
 
-        using (var command = new SqlCommand(tsqlSourceCode, connection))
-        {
-            if (parameterName != null)
-            {
-                command.Parameters.AddWithValue(
-                   parameterName,
-                   parameterValue);
-            }
-            int rowsAffected = command.ExecuteNonQuery();
+    //    using (var command = new SqlCommand(tsqlSourceCode, connection))
+    //    {
+    //        if (parameterName != null)
+    //        {
+    //            command.Parameters.AddWithValue(
+    //               parameterName,
+    //               parameterValue);
+    //        }
+    //        int rowsAffected = command.ExecuteNonQuery();
            
-        }
-    }
+    //    }
+    //}
 
     //static void SQL_ExecuteReader(SqlConnection connection)
     //{
