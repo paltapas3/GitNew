@@ -9,7 +9,7 @@ using WebAPICore.Models;
 
 public class DBUtils
 {
-    SqlCommand cmd;
+   
     public static void AddUser(UserAccount user)
     {
         try
@@ -23,7 +23,7 @@ public class DBUtils
             using (SqlConnection connection = new SqlConnection(cb.ConnectionString))
             {
                 
-                cmd = new SqlCommand("INSERT INTO UserAccount (Id, Name, Address, Pan, Account_Type, Balance, Gender, Email, DOB)VALUES('@Id', '@Name', '@Address', '@Pan', '@Account_Type', '@Balance', '@Gender', '@Email', '@DOB')",connection);
+                SqlCommand cmd = new SqlCommand("INSERT INTO UserAccount (Id, Name, Address, Pan, Account_Type, Balance, Gender, Email, DOB)VALUES('@Id', '@Name', '@Address', '@Pan', '@Account_Type', '@Balance', '@Gender', '@Email', '@DOB')",connection);
                 cmd.Parameters.AddWithValue("@Id", UserList._userList[0]);
                 cmd.Parameters.AddWithValue("@Name", UserList._userList[1]);
                 cmd.Parameters.AddWithValue("@Address", UserList._userList[2]);
