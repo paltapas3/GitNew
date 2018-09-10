@@ -25,10 +25,11 @@ namespace WebAPICore.Controllers
         [HttpPost]
         public ActionResult<List<UserAccount>> Create(UserAccount userAccount)
         {
-           // userAccount = new UserAccount();
+            // userAccount = new UserAccount();
+            DBUtils du = new DBUtils();
             UserList._userList.Add(userAccount);
-            DBUtils.AddUser(userAccount);
-            return   UserList._userList;
+            du.AddUser(userAccount);
+            return UserList._userList;
         }
     }
 }
