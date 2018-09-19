@@ -16,7 +16,7 @@ namespace WebAPICore.Controllers
     {
 
         [HttpGet]
-        public ActionResult<string> GetAll()
+        public ActionResult<List<string>> GetAll()
         {
             DBUtils du = new DBUtils();
             return du.connectDb();

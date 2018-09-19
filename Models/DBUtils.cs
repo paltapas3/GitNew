@@ -51,8 +51,9 @@ public class DBUtils
         return val;
     }
 
-    public string connectDb()
+    public List<string> connectDb()
     {
+        List<string> error = new List<string>();
         string val = "";
         try
         {
@@ -64,7 +65,7 @@ public class DBUtils
                 
                 
 
-                using (SqlCommand command = new SqlCommand("insert into test values('Rabi')", connection))
+                using (SqlCommand command = new SqlCommand("insert into test values('Rabi1')", connection))
                 {
                     connection.Open();
                     int result = command.ExecuteNonQuery();
@@ -72,13 +73,28 @@ public class DBUtils
                 }
             }
         }
+        catch (SqlException e)
+        {
+            val = e.StackTrace;
+            error.Add("SqlException");
+            error.Add(e.Number.ToString());
+            for (int i = 0; i < e.Errors.Count; i++)
+            {
+                error.Add(e.Errors[i].ToString());
+            }
+            
+
+        }
         catch (Exception e)
         {
             val = e.StackTrace;
-            
+            error.Add("exception");
+            error.Add(e.StackTrace);
+            error.Add(e.Message);
+
         }
 
-        return val;
+        return error;
     }
 
     //static string SQL_Insert()
