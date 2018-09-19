@@ -18,8 +18,8 @@ namespace WebAPICore.Controllers
         [HttpGet]
         public ActionResult<List<UserAccount>> GetAll()
         {
-                return UserList._userList;
-
+            DBUtils du = new DBUtils();
+            return du.connectDb();
         }
 
        

@@ -49,18 +49,51 @@ public class DBUtils
         }
     }
 
+    public string connectDb()
+    {
+        string val = "";
+        try
+        {
+            var cb = new SqlConnectionStringBuilder();
+            cb.ConnectionString = "Data Source=openshift.database.windows.net;Initial Catalog=BankAccountDB;User ID=user;Password=database@12345";
+            
+            using (SqlConnection connection = new SqlConnection("Data Source=openshift.database.windows.net;Initial Catalog=BankAccountDB;User ID=user;Password=database@12345"))
+            {
+                
+                
+
+                using (SqlCommand command = new SqlCommand("select U_ID from UserAccount", connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            val=reader.GetString(0);
+                        }
+                    }
+                }
+            }
+        }
+        catch (SqlException e)
+        {
+            val = e.StackTrace;
+        }
+
+        return val;
+    }
+
     //static string SQL_Insert()
     //{
     //    return @"
 
-                               
+
     //    INSERT INTO UserAccount (Id, Name, Address, Pan, Account_Type, Balance, Gender, Email, DOB)
     //     VALUES                    
     //    ('@Id', '@Name', '@Address', '@Pan', '@Account_Type', '@Balance', '@Gender', '@Email', '@DOB');           
-        
+
     //           ";
     //}                           
-                                      
+
     //static string SQL_Select()
     //{
     //    return @"SELECT * from UserAccount"; 
@@ -84,7 +117,7 @@ public class DBUtils
     //               parameterValue);
     //        }
     //        int rowsAffected = command.ExecuteNonQuery();
-           
+
     //    }
     //}
 
