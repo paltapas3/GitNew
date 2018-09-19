@@ -74,7 +74,7 @@ public class DBUtils
                 }
             }
         }
-        catch (SqlException e)
+        catch (Exception e)
         {
             val = e.StackTrace;
         }
