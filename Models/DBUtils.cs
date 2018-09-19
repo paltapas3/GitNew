@@ -24,15 +24,15 @@ public class DBUtils
             using (SqlConnection connection = new SqlConnection(cb.ConnectionString))
             {
                 SqlCommand cmd = new SqlCommand("INSERT INTO UserAccount VALUES (@Id,@Name,@Address,@Pan,@Account_Type, @Balance, @Gender, @Email, @DOB)", connection);
-                cmd.Parameters.AddWithValue("@Id",          "4" );                  
-                cmd.Parameters.AddWithValue("@Name",        "4" );
-                cmd.Parameters.AddWithValue("@Address",     "4" );
-                cmd.Parameters.AddWithValue("@Pan",         "4" );
-                cmd.Parameters.AddWithValue("@Account_Type","4" );
-                cmd.Parameters.AddWithValue("@Balance",     "4" );
-                cmd.Parameters.AddWithValue("@Gender",      "4" );
-                cmd.Parameters.AddWithValue("@Email",       "4" );
-                cmd.Parameters.AddWithValue("@DOB",         "4" );
+                cmd.Parameters.Add("@Id",          "4" );                  
+                cmd.Parameters.Add("@Name",        "4" );
+                cmd.Parameters.Add("@Address",     "4" );
+                cmd.Parameters.Add("@Pan",         "4" );
+                cmd.Parameters.Add("@Account_Type","4" );
+                cmd.Parameters.Add("@Balance",     "4" );
+                cmd.Parameters.Add("@Gender",      "4" );
+                cmd.Parameters.Add("@Email",       "4" );
+                cmd.Parameters.Add("@DOB",         "4" );
                 connection.Open();
 
 
