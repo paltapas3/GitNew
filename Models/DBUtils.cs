@@ -10,8 +10,9 @@ using WebAPICore.Models;
 public class DBUtils
 {
    
-    public void AddUser(UserAccount user)
+    public string AddUser(UserAccount user)
     {
+        string val = "";
         try
         {
             var cb = new SqlConnectionStringBuilder();
@@ -43,10 +44,11 @@ public class DBUtils
 
             }
         }
-        catch (SqlException e)
+        catch (Exception e)
         {
-            throw e;
+            val= e.StackTrace;
         }
+        return val;
     }
 
     public string connectDb()
