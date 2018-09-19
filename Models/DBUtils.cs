@@ -17,22 +17,22 @@ public class DBUtils
             var cb = new SqlConnectionStringBuilder();
             //cb.DataSource = "openshift.database.windows.net";
             //cb.UserID = "user";
-             cb.ConnectionString = "Data Source=openshift.database.windows.net;Initial Catalog=BankAccountDB;User ID=user;Password=database@12345";
+            cb.ConnectionString = "Data Source=openshift.database.windows.net;Initial Catalog=BankAccountDB;User ID=user;Password=database@12345";
             //cb.Password = "database@12345";
             //cb.InitialCatalog = "BankAccountDB";
 
             using (SqlConnection connection = new SqlConnection(cb.ConnectionString))
             {
-                SqlCommand cmd = new SqlCommand("INSERT INTO UserAccount VALUES (@Id,@Name,@Address,@Pan,@Account_Type, @Balance, @Gender, @Email, @DOB)", connection);
-                cmd.Parameters.AddWithValue("@Id",          "4" );                  
-                cmd.Parameters.AddWithValue("@Name",        "4" );
-                cmd.Parameters.AddWithValue("@Address",     "4" );
-                cmd.Parameters.AddWithValue("@Pan",         "4" );
-                cmd.Parameters.AddWithValue("@Account_Type","4" );
-                cmd.Parameters.AddWithValue("@Balance",     "4" );
-                cmd.Parameters.AddWithValue("@Gender",      "4" );
-                cmd.Parameters.AddWithValue("@Email",       "4" );
-                cmd.Parameters.AddWithValue("@DOB",         "4" );
+                SqlCommand cmd = new SqlCommand("INSERT INTO UserAccount VALUES (@Id, @Name, @Address, @Pan, @Account_Type, @Balance, @Gender, @Email, @DOB)", connection);
+                cmd.Parameters.AddWithValue("@Id", user.Id);                  
+                cmd.Parameters.AddWithValue("@Name",user.Name);
+                cmd.Parameters.AddWithValue("@Address",user.Address);
+                cmd.Parameters.AddWithValue("@Pan",user.Pan);
+                cmd.Parameters.AddWithValue("@Account_Type",user.Account_Type);
+                cmd.Parameters.AddWithValue("@Balance",user.Balance);
+                cmd.Parameters.AddWithValue("@Gender",user.Gender);
+                cmd.Parameters.AddWithValue("@Email",user.Email);
+                cmd.Parameters.AddWithValue("@DOB",user.DOB);
                 connection.Open();
 
 
@@ -47,7 +47,6 @@ public class DBUtils
         {
             throw e;
         }
-       
     }
 
     //static string SQL_Insert()
