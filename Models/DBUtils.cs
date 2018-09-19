@@ -17,22 +17,22 @@ public class DBUtils
             var cb = new SqlConnectionStringBuilder();
             //cb.DataSource = "openshift.database.windows.net";
             //cb.UserID = "user";
-             cb.ConnectionString = "Server = tcp:openshift.database.windows.net,1433; Initial Catalog = BankAccountDB; Persist Security Info = False; User ID =user; Password =database@12345; MultipleActiveResultSets = True; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;";
+             cb.ConnectionString = "Server=tcp:openshift.database.windows.net,1433;Initial Catalog=BankAccountDB;Persist Security Info=False;User ID=user;Password=database@12345;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             //cb.Password = "database@12345";
             //cb.InitialCatalog = "BankAccountDB";
 
             using (SqlConnection connection = new SqlConnection(cb.ConnectionString))
             {
                 SqlCommand cmd = new SqlCommand("INSERT INTO UserAccount VALUES (@Id,@Name,@Address,@Pan,@Account_Type, @Balance, @Gender, @Email, @DOB)", connection);
-                cmd.Parameters.AddWithValue("@Id","Rabi");                  
-                cmd.Parameters.AddWithValue("@Name","1");
-                cmd.Parameters.AddWithValue("@Address","Rishav");
-                cmd.Parameters.AddWithValue("@Pan","ss");
-                cmd.Parameters.AddWithValue("@Account_Type","asd");
-                cmd.Parameters.AddWithValue("@Balance","das");
-                cmd.Parameters.AddWithValue("@Gender","asdas");
-                cmd.Parameters.AddWithValue("@Email","asdsa");
-                cmd.Parameters.AddWithValue("@DOB","asdsa");
+                cmd.Parameters.AddWithValue("@Id",          "4" );                  
+                cmd.Parameters.AddWithValue("@Name",        "4" );
+                cmd.Parameters.AddWithValue("@Address",     "4" );
+                cmd.Parameters.AddWithValue("@Pan",         "4" );
+                cmd.Parameters.AddWithValue("@Account_Type","4" );
+                cmd.Parameters.AddWithValue("@Balance",     "4" );
+                cmd.Parameters.AddWithValue("@Gender",      "4" );
+                cmd.Parameters.AddWithValue("@Email",       "4" );
+                cmd.Parameters.AddWithValue("@DOB",         "4" );
                 connection.Open();
 
 

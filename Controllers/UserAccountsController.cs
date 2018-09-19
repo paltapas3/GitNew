@@ -19,6 +19,7 @@ namespace WebAPICore.Controllers
         public ActionResult<List<UserAccount>> GetAll()
         {
                 return UserList._userList;
+
         }
 
        
