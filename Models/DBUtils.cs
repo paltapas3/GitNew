@@ -25,15 +25,15 @@ public class DBUtils
             {
 
                 SqlCommand cmd = new SqlCommand("INSERT INTO UserAccount VALUES (@Id, @Name, @Address, @Pan, @Account_Type, @Balance, @Gender, @Email, @DOB)", connection);
-                cmd.Parameters.Add("@Id", user.Id);                  
-                cmd.Parameters.Add("@Name",user.Name);
-                cmd.Parameters.Add("@Address",user.Address);
-                cmd.Parameters.Add("@Pan",user.Pan);
-                cmd.Parameters.Add("@Account_Type",user.Account_Type);
-                cmd.Parameters.Add("@Balance",user.Balance);
-                cmd.Parameters.Add("@Gender",user.Gender);
-                cmd.Parameters.Add("@Email",user.Email);
-                cmd.Parameters.Add("@DOB",user.DOB);
+                cmd.Parameters.AddWithValue("@Id", user.Id);                  
+                cmd.Parameters.AddWithValue("@Name",user.Name);
+                cmd.Parameters.AddWithValue("@Address",user.Address);
+                cmd.Parameters.AddWithValue("@Pan",user.Pan);
+                cmd.Parameters.AddWithValue("@Account_Type",user.Account_Type);
+                cmd.Parameters.AddWithValue("@Balance",user.Balance);
+                cmd.Parameters.AddWithValue("@Gender",user.Gender);
+                cmd.Parameters.AddWithValue("@Email",user.Email);
+                cmd.Parameters.AddWithValue("@DOB",user.DOB);
                 connection.Open();
 
 

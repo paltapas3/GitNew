@@ -29,7 +29,7 @@ namespace WebAPICore.Controllers
             DBUtils du = new DBUtils();
             du.AddUser(userAccount);
 
-            UserList._userList.Add(userAccount);
+          //  UserList._userList.Add(userAccount);
        
             return UserList._userList;
         }
