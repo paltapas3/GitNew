@@ -23,17 +23,17 @@ public class DBUtils
 
             using (SqlConnection connection = new SqlConnection(cb.ConnectionString))
             {
-                
-                SqlCommand cmd = new SqlCommand("INSERT INTO UserAccount (U_ID, U_NAME, U_ADDRESS, U_PAN, U_ACCOUNTTYPE, U_BALANCE, U_GENDER, U_EMAIL, U_DOB) VALUES (@Id, @Name, @Address, @Pan, @Account_Type, @Balance, @Gender, @Email, @DOB)",connection);
-                cmd.Parameters.AddWithValue("@Id",           "2");                  
-                cmd.Parameters.AddWithValue("@Name",         "2");
-                cmd.Parameters.AddWithValue("@Address",      "2");
-                cmd.Parameters.AddWithValue("@Pan",          "2");
-                cmd.Parameters.AddWithValue("@Account_Type", "2");
-                cmd.Parameters.AddWithValue("@Balance",      "2");
-                cmd.Parameters.AddWithValue("@Gender",       "2");
-                cmd.Parameters.AddWithValue("@Email",        "2");
-                cmd.Parameters.AddWithValue("@DOB",          "2");
+
+                SqlCommand cmd = new SqlCommand("INSERT INTO UserAccount VALUES (@Id, @Name, @Address, @Pan, @Account_Type, @Balance, @Gender, @Email, @DOB)", connection);
+                cmd.Parameters.Add("@Id", user.Id);                  
+                cmd.Parameters.Add("@Name",user.Name);
+                cmd.Parameters.Add("@Address",user.Address);
+                cmd.Parameters.Add("@Pan",user.Pan);
+                cmd.Parameters.Add("@Account_Type",user.Account_Type);
+                cmd.Parameters.Add("@Balance",user.Balance);
+                cmd.Parameters.Add("@Gender",user.Gender);
+                cmd.Parameters.Add("@Email",user.Email);
+                cmd.Parameters.Add("@DOB",user.DOB);
                 connection.Open();
 
 
