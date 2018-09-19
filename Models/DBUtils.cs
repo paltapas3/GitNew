@@ -62,21 +62,18 @@ public class DBUtils
                 
                 
 
-                using (SqlCommand command = new SqlCommand("select U_ID from UserAccount", connection))
+                using (SqlCommand command = new SqlCommand("insert into test values('Rabi')", connection))
                 {
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            val=reader.GetString(0);
-                        }
-                    }
+                    connection.Open();
+                    int result = command.ExecuteNonQuery();
+                    connection.Close();
                 }
             }
         }
         catch (Exception e)
         {
             val = e.StackTrace;
+            
         }
 
         return val;
