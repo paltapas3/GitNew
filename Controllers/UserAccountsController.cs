@@ -16,7 +16,7 @@ namespace WebAPICore.Controllers
     {
 
         [HttpGet]
-        public ActionResult<List<string>> GetAll()
+        public ActionResult<List<UserAccount>> GetAll()
         {
             DBUtils du = new DBUtils();
 
