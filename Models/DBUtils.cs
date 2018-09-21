@@ -87,7 +87,7 @@ public class DBUtils
                     SqlDataReader result = command.ExecuteReader();
                     if (result.Read())
                     {
-                        error.Add(result["Id"].ToString());
+                        error.Add(result["U_ID"].ToString());
                     }
                    
 
