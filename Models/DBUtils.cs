@@ -67,7 +67,7 @@ public class DBUtils
        
     }
 
-    public List<string> connectDb()
+    public List<UserAccount> connectDb()
     {
         List<string> error = new List<string>();
         List<UserAccount> userAct = new List<UserAccount>();
