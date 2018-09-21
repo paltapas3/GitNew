@@ -37,9 +37,6 @@ public class DBUtils
                 cmd.Parameters.AddWithValue("@DOB",user.DOB);
                 connection.Open();
 
-
-                // SQL_ExecuteReader(connection);
-
                 int result=cmd.ExecuteNonQuery();
                 connection.Close();
 
@@ -84,10 +81,16 @@ public class DBUtils
                 
                 
 
-                using (SqlCommand command = new SqlCommand("insert into test values('Rabi1')", connection))
+                using (SqlCommand command = new SqlCommand("select * from UserAccount", connection))
                 {
                     connection.Open();
-                    int result = command.ExecuteNonQuery();
+                    SqlDataReader result = command.ExecuteReader();
+                    if (result.Read())
+                    {
+                        error.Add(result.ToString());
+                    }
+                   
+
                     connection.Close();
                 }
             }
@@ -115,64 +118,4 @@ public class DBUtils
 
         return error;
     }
-
-    //static string SQL_Insert()
-    //{
-    //    return @"
-
-
-    //    INSERT INTO UserAccount (Id, Name, Address, Pan, Account_Type, Balance, Gender, Email, DOB)
-    //     VALUES                    
-    //    ('@Id', '@Name', '@Address', '@Pan', '@Account_Type', '@Balance', '@Gender', '@Email', '@DOB');           
-
-    //           ";
-    //}                           
-
-    //static string SQL_Select()
-    //{
-    //    return @"SELECT * from UserAccount"; 
-    //}
-
-    //static void SQL_NonQuery(
-    //     SqlConnection connection,
-    //     string tsqlPurpose,
-    //     string tsqlSourceCode,
-    //     string parameterName = null,
-    //     string parameterValue = null
-    //     )
-    //{
-
-    //    using (var command = new SqlCommand(tsqlSourceCode, connection))
-    //    {
-    //        if (parameterName != null)
-    //        {
-    //            command.Parameters.AddWithValue(
-    //               parameterName,
-    //               parameterValue);
-    //        }
-    //        int rowsAffected = command.ExecuteNonQuery();
-
-    //    }
-    //}
-
-    //static void SQL_ExecuteReader(SqlConnection connection)
-    //{
-
-    //    string tsql = SQL_Select();
-
-    //    using (var command = new SqlCommand(tsql, connection))
-    //    {
-    //        using (SqlDataReader reader = command.ExecuteReader())
-    //        {
-    //            while (reader.Read())
-    //            {
-    //                //reader.GetGuid(0),
-    //                //   reader.GetString(1),
-    //                //   reader.GetInt32(2),
-    //                //   (reader.IsDBNull(3)) ? "NULL" : reader.GetString(3),
-    //                //   (reader.IsDBNull(4)) ? "NULL" : reader.GetString(4));
-    //            }
-    //        }
-    //    }
-    //}
 }

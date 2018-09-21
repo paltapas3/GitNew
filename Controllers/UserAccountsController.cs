@@ -19,6 +19,7 @@ namespace WebAPICore.Controllers
         public ActionResult<List<string>> GetAll()
         {
             DBUtils du = new DBUtils();
+
             return du.connectDb();
         }
 
@@ -28,9 +29,6 @@ namespace WebAPICore.Controllers
         {
             
             DBUtils du = new DBUtils();
-
-
-            //  UserList._userList.Add(userAccount);
 
             return du.AddUser(userAccount);
         }
