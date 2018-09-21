@@ -70,6 +70,8 @@ public class DBUtils
     public List<string> connectDb()
     {
         List<string> error = new List<string>();
+        List<UserAccount> userAct = new List<UserAccount>();
+        UserAccount user;
         string val = "";
         try
         {
@@ -87,8 +89,20 @@ public class DBUtils
                     SqlDataReader result = command.ExecuteReader();
                     while (result.Read())
                     {
-                        error.Add(result["U_ID"].ToString()+","+ result["U_NAME"].ToString()+","+ result["U_ADDRESS"].ToString()+","+ result["U_PAN"].ToString()+","+ result["U_ACCOUNTTYPE"].ToString()+","+ result["U_BALANCE"].ToString()+","+ result["U_GENDER"].ToString()+","+ result["U_EMAIL"].ToString()+","+ result["U_DOB"].ToString());
-                       
+                        user = new UserAccount();
+                        user.Id = result["U_ID"].ToString();
+                        user.Name = result["U_NAME"].ToString();
+                        user.Address = result["U_ADDRESS"].ToString();
+                        user.Pan = result["U_PAN"].ToString();
+                        user.Account_Type = result["U_ACCOUNTTYPE"].ToString();
+                        user.Balance = result["U_BALANCE"].ToString();
+                        user.Gender = result["U_GENDER"].ToString();
+                        user.Email = result["U_EMAIL"].ToString();
+                        user.DOB = result["U_DOB"].ToString();
+                        userAct.Add(user);
+
+                        //error.Add(result["U_ID"].ToString()+","+ result["U_NAME"].ToString()+","+ result["U_ADDRESS"].ToString()+","+ result["U_PAN"].ToString()+","+ result["U_ACCOUNTTYPE"].ToString()+","+ result["U_BALANCE"].ToString()+","+ result["U_GENDER"].ToString()+","+ result["U_EMAIL"].ToString()+","+ result["U_DOB"].ToString());
+
                     }
                    
 
@@ -117,6 +131,6 @@ public class DBUtils
 
         }
 
-        return error;
+        return userAct;
     }
 }
