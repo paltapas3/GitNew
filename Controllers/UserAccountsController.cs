@@ -25,7 +25,7 @@ namespace WebAPICore.Controllers
 
        
         [HttpPost]
-        public ActionResult<List<UserAccount>> Create(UserAccount userAccount)
+        public ActionResult<List<string>> Create(UserAccount userAccount)
         {
             
             DBUtils du = new DBUtils();

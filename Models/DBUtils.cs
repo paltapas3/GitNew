@@ -10,10 +10,9 @@ using WebAPICore.Models;
 public class DBUtils
 {
    
-    public List<UserAccount> AddUser(UserAccount user)
+    public List<string> AddUser(UserAccount user)
     {
         List<string> error = new List<string>();
-        List<UserAccount> userC = new List<UserAccount>();
         string val = "";
         try
         {
@@ -64,7 +63,7 @@ public class DBUtils
 
         }
 
-        return userC;
+        return error;
        
     }
 
