@@ -85,9 +85,18 @@ public class DBUtils
                 {
                     connection.Open();
                     SqlDataReader result = command.ExecuteReader();
-                    if (result.Read())
+                    while (result.Read())
                     {
-                        error.Add(result["U_ID"].ToString());
+                        error.Add(result["U_ID"].ToString()+" "+ result["U_NAME"].ToString());
+                        error.Add(result["U_NAME"].ToString());
+                        error.Add(result["U_ADDRESS"].ToString());
+                        error.Add(result["U_PAN"].ToString());
+                        error.Add(result["U_ACCOUNTTYPE"].ToString());
+                        error.Add(result["U_BALANCE"].ToString());
+                        error.Add(result["U_GENDER"].ToString());
+                        error.Add(result["U_EMAIL"].ToString());
+                        error.Add(result["U_DOB"].ToString());
+
                     }
                    
 
