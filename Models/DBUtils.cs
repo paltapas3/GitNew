@@ -10,9 +10,10 @@ using WebAPICore.Models;
 public class DBUtils
 {
    
-    public List<string> AddUser(UserAccount user)
+    public UserAccount AddUser(UserAccount user)
     {
-        List<string> error = new List<string>();
+        //List<string> error = new List<string>();
+      //  UserAccount userC = new List<UserAccount>();
         string val = "";
         try
         {
@@ -44,33 +45,36 @@ public class DBUtils
         }
         catch (SqlException e)
         {
-            val = e.StackTrace;
-            error.Add("SqlException");
-            error.Add(e.Number.ToString());
-            for (int i = 0; i < e.Errors.Count; i++)
-            {
-                error.Add(e.Errors[i].ToString());
-            }
+            //val = e.StackTrace;
+            //error.Add("SqlException");
+            //error.Add(e.Number.ToString());
+            //for (int i = 0; i < e.Errors.Count; i++)
+            //{
+            //    error.Add(e.Errors[i].ToString());
+            //}
+
+            throw new Exception(e.StackTrace);
 
 
         }
         catch (Exception e)
         {
-            val = e.StackTrace;
-            error.Add("exception");
-            error.Add(e.StackTrace);
-            error.Add(e.Message);
+            //val = e.StackTrace;
+            //error.Add("exception");
+            //error.Add(e.StackTrace);
+            //error.Add(e.Message);
+            throw new Exception(e.StackTrace);
 
         }
 
-        return error;
+        return user;
        
     }
 
-    public List<UserAccount> connectDb()
+    public List<UserAccount> getUsers()
     {
         List<string> error = new List<string>();
-        List<UserAccount> userAct = new List<UserAccount>();
+        List<UserAccount> userList = new List<UserAccount>();
         UserAccount user;
         string val = "";
         try
@@ -99,7 +103,7 @@ public class DBUtils
                         user.Gender = result["U_GENDER"].ToString();
                         user.Email = result["U_EMAIL"].ToString();
                         user.DOB = result["U_DOB"].ToString();
-                        userAct.Add(user);
+                        userList.Add(user);
 
                         //error.Add(result["U_ID"].ToString()+","+ result["U_NAME"].ToString()+","+ result["U_ADDRESS"].ToString()+","+ result["U_PAN"].ToString()+","+ result["U_ACCOUNTTYPE"].ToString()+","+ result["U_BALANCE"].ToString()+","+ result["U_GENDER"].ToString()+","+ result["U_EMAIL"].ToString()+","+ result["U_DOB"].ToString());
 
@@ -131,6 +135,6 @@ public class DBUtils
 
         }
 
-        return userAct;
+        return userList;
     }
 }

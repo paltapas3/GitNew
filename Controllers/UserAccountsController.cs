@@ -20,12 +20,12 @@ namespace WebAPICore.Controllers
         {
             DBUtils du = new DBUtils();
 
-            return du.connectDb();
+            return du.getUsers();
         }
 
        
         [HttpPost]
-        public ActionResult<List<string>> Create(UserAccount userAccount)
+        public ActionResult<UserAccount> Create(UserAccount userAccount)
         {
             
             DBUtils du = new DBUtils();
