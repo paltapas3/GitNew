@@ -12,7 +12,7 @@ public class DBUtils
    
     public UserAccount AddUser(UserAccount user)
     {
-        //List<string> error = new List<string>();
+        List<string> error = new List<string>();
       //  UserAccount userC = new List<UserAccount>();
         string val = "";
         try
@@ -45,25 +45,25 @@ public class DBUtils
         }
         catch (SqlException e)
         {
-            //val = e.StackTrace;
-            //error.Add("SqlException");
-            //error.Add(e.Number.ToString());
-            //for (int i = 0; i < e.Errors.Count; i++)
-            //{
-            //    error.Add(e.Errors[i].ToString());
-            //}
+            val = e.StackTrace;
+            error.Add("SqlException");
+            error.Add(e.Number.ToString());
+            for (int i = 0; i < e.Errors.Count; i++)
+            {
+                error.Add(e.Errors[i].ToString());
+            }
 
-            throw new Exception(e.StackTrace);
+          //  throw new Exception(e.StackTrace);
 
 
         }
         catch (Exception e)
         {
-            //val = e.StackTrace;
-            //error.Add("exception");
-            //error.Add(e.StackTrace);
-            //error.Add(e.Message);
-            throw new Exception(e.StackTrace);
+            val = e.StackTrace;
+            error.Add("exception");
+            error.Add(e.StackTrace);
+            error.Add(e.Message);
+           // throw new Exception(e.StackTrace);
 
         }
 
@@ -116,22 +116,18 @@ public class DBUtils
         }
         catch (SqlException e)
         {
-            val = e.StackTrace;
-            error.Add("SqlException");
-            error.Add(e.Number.ToString());
+            string errormsg = string.Empty;
             for (int i = 0; i < e.Errors.Count; i++)
             {
-                error.Add(e.Errors[i].ToString());
+                errormsg = errormsg + e.Errors[i].ToString();
             }
-            
+            userList.Add(new UserAccount { Name= errormsg });
+
 
         }
         catch (Exception e)
         {
-            val = e.StackTrace;
-            error.Add("exception");
-            error.Add(e.StackTrace);
-            error.Add(e.Message);
+            userList.Add(new UserAccount { Name = e.StackTrace });
 
         }
 
