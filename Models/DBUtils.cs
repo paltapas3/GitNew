@@ -121,13 +121,13 @@ public class DBUtils
             {
                 errormsg = errormsg + e.Errors[i].ToString();
             }
-           // userList.Add(new UserAccount { Name= errormsg });
+            userList.Add(new UserAccount { Name= errormsg });
 
 
         }
         catch (Exception e)
         {
-            //userList.Add(new UserAccount { Name = e.StackTrace });
+            userList.Add(new UserAccount { Name = e.StackTrace });
 
         }
 
