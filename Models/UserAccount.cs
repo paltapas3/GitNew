@@ -4,7 +4,7 @@ namespace WebAPICore.Models
 {
     public class UserAccount
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string Pan { get; set; }

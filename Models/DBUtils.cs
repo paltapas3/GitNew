@@ -26,8 +26,8 @@ public class DBUtils
 
             using (SqlConnection connection = new SqlConnection(cb.ConnectionString))
             {
-                SqlCommand cmd = new SqlCommand("INSERT INTO UserAccount VALUES (@Id, @Name, @Address, @Pan, @Account_Type, @Balance, @Gender, @Email, @DOB)", connection);
-                cmd.Parameters.AddWithValue("@Id", user.Id);                  
+                SqlCommand cmd = new SqlCommand("INSERT INTO UserAccount VALUES (@Name, @Address, @Pan, @Account_Type, @Balance, @Gender, @Email, @DOB)", connection);
+                //cmd.Parameters.AddWithValue("@Id", user.Id);                  
                 cmd.Parameters.AddWithValue("@Name",user.Name);
                 cmd.Parameters.AddWithValue("@Address",user.Address);
                 cmd.Parameters.AddWithValue("@Pan",user.Pan);
@@ -94,7 +94,7 @@ public class DBUtils
                     while (result.Read())
                     {
                         user = new UserAccount();
-                        user.Id = result["U_ID"].ToString();
+                        user.Id = result["U_ID"];
                         user.Name = result["U_NAME"].ToString();
                         user.Address = result["U_ADDRESS"].ToString();
                         user.Pan = result["U_PAN"].ToString();
