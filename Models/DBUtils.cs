@@ -76,7 +76,7 @@ public class DBUtils
         List<string> error = new List<string>();
         List<UserAccount> userList = new List<UserAccount>();
         UserAccount user;
-        string val = "";
+   
         try
         {
             var cb = new SqlConnectionStringBuilder();
@@ -94,7 +94,7 @@ public class DBUtils
                     while (result.Read())
                     {
                         user = new UserAccount();
-                        user.Id = result["U_ID"];
+                        user.Id = Convert.ToInt32(result["U_ID"]);
                         user.Name = result["U_NAME"].ToString();
                         user.Address = result["U_ADDRESS"].ToString();
                         user.Pan = result["U_PAN"].ToString();
