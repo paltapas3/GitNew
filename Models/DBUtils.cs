@@ -99,7 +99,7 @@ public class DBUtils
                         user.Address = result["U_ADDRESS"].ToString();
                         user.Pan = result["U_PAN"].ToString();
                         user.Account_Type = result["U_ACCOUNTTYPE"].ToString();
-                        user.Balance = result["U_BALANCE"].ToString();
+                        user.Balance = Convert.ToInt32(result["U_BALANCE"]);
                         user.Gender = result["U_GENDER"].ToString();
                         user.Email = result["U_EMAIL"].ToString();
                         user.DOB = result["U_DOB"].ToString();
