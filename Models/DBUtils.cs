@@ -26,17 +26,17 @@ public class DBUtils
 
             using (SqlConnection connection = new SqlConnection(cb.ConnectionString))
             {
-                SqlCommand cmd = new SqlCommand("INSERT INTO UserAccount VALUES (@Name, @Address, @Pan, @Account_Type, @Balance, @Gender, @Email, @DOB,@AccNumber)", connection);
+                SqlCommand cmd = new SqlCommand("INSERT INTO UserAccount VALUES (@Name, @Address, @Pan, @Account_Type,@Gender, @Email, @DOB,@AccNumber,@Balance)", connection);
                 //cmd.Parameters.AddWithValue("@Id", user.Id);                  
                 cmd.Parameters.AddWithValue("@Name",user.Name);
                 cmd.Parameters.AddWithValue("@Address",user.Address);
                 cmd.Parameters.AddWithValue("@Pan",user.Pan);
-                cmd.Parameters.AddWithValue("@Account_Type",user.Account_Type);
-                cmd.Parameters.AddWithValue("@Balance",user.Balance);
+                cmd.Parameters.AddWithValue("@Account_Type",user.Account_Type);                
                 cmd.Parameters.AddWithValue("@Gender",user.Gender);
                 cmd.Parameters.AddWithValue("@Email",user.Email);
                 cmd.Parameters.AddWithValue("@DOB",user.DOB);
                 cmd.Parameters.AddWithValue("@AccNumber", user.AccountNumber);
+                cmd.Parameters.AddWithValue("@Balance", user.Balance);
 
                 connection.Open();
 
