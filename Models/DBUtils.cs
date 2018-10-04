@@ -26,7 +26,7 @@ public class DBUtils
 
             using (SqlConnection connection = new SqlConnection(cb.ConnectionString))
             {
-                SqlCommand cmd = new SqlCommand("INSERT INTO UserAccount VALUES (@Name, @Address, @Pan, @Account_Type, @Balance, @Gender, @Email, @DOB)", connection);
+                SqlCommand cmd = new SqlCommand("INSERT INTO UserAccount VALUES (@Name, @Address, @Pan, @Account_Type, @Balance, @Gender, @Email, @DOB,@AccNumber)", connection);
                 //cmd.Parameters.AddWithValue("@Id", user.Id);                  
                 cmd.Parameters.AddWithValue("@Name",user.Name);
                 cmd.Parameters.AddWithValue("@Address",user.Address);
@@ -36,6 +36,8 @@ public class DBUtils
                 cmd.Parameters.AddWithValue("@Gender",user.Gender);
                 cmd.Parameters.AddWithValue("@Email",user.Email);
                 cmd.Parameters.AddWithValue("@DOB",user.DOB);
+                cmd.Parameters.AddWithValue("@AccNumber", user.AccountNumber);
+
                 connection.Open();
 
                 int result=cmd.ExecuteNonQuery();
@@ -103,6 +105,7 @@ public class DBUtils
                         user.Gender = result["U_GENDER"].ToString();
                         user.Email = result["U_EMAIL"].ToString();
                         user.DOB = result["U_DOB"].ToString();
+                        user.AccountNumber = Convert.ToInt32(result["U_ACCOUNTNUMBER"]);
                         userList.Add(user);
 
                         //error.Add(result["U_ID"].ToString()+","+ result["U_NAME"].ToString()+","+ result["U_ADDRESS"].ToString()+","+ result["U_PAN"].ToString()+","+ result["U_ACCOUNTTYPE"].ToString()+","+ result["U_BALANCE"].ToString()+","+ result["U_GENDER"].ToString()+","+ result["U_EMAIL"].ToString()+","+ result["U_DOB"].ToString());
